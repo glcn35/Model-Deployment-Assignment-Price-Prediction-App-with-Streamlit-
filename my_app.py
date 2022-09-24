@@ -70,9 +70,9 @@ st.write(' ')
 my_dict = {
             "make_model": make_model,
             "Gearing_Type":Gearing_Type,
-            "age": age,
-            "hp_kW":hp_kW,
-            "km":km,
+            "age": int(age),
+            "hp_kW":int(hp_kW),
+            "km":int(km),
             "Gears":Gears
         }
 

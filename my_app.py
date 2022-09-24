@@ -73,7 +73,7 @@ my_dict = {
             "age": int(age),
             "hp_kW":int(hp_kW),
             "km":int(km),
-            "Gears":Gears
+            "Gears":int(Gears)
         }
 
 col1, col2= st.columns(2)

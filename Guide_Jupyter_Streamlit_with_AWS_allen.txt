@@ -1,0 +1,213 @@
+(% or ! Use If you use Jpyter Notebook for linux command (both of different) )
+
+let's start by opening git or bash and go to user folder (not Users)
+
+  cd
+
+-------------Global Python-----------
+
+0- find where python.exe linux or git
+
+  which python
+
+0- find where python.exe windows cmd - linux - git
+	
+  where python
+  py --list-paths
+  py -0p
+
+1- check version python or py (both of different)
+
+  python --version
+  py --version
+
+1- install jupter notebook for Global Python
+  
+  pip install notebook  
+  pip install notebook -q (quite)
+
+2- open jupter notebook with Global Python then close
+
+  jupyter notebook
+
+-------------venv Virtual Python-----------
+
+3. Create a folder on Desktop or below User with cd comand (not Users)
+https://www.cyberciti.biz/faq/how-to-make-a-folder-in-linux-or-unix/
+
+  cd
+  pwd
+  mkdir Jupyter_Notebook  
+  cd Jupyter_Notebook
+
+  Create a folder on Desktop or below User Folder with Manual - Windows cmd or git
+  
+    explorer.exe .
+    cd Jupyter_Notebook
+
+4. Create virtual environment
+
+  python -m venv env_name
+
+5. activate venv
+
+  source env_name/bin/activate 
+  source env_name/Scripts/activate 
+  (for linux or git)  
+  (in linux/mac machines "bin" instead of Scripts: see above) 
+  (if not works try without source or with . 'dot-point')  
+
+  scout_env\Scripts\activate
+  (for windows cmd)
+
+
+  cd ./env_name/bin/
+  activate
+  (if not Success use cd go bin or script)
+
+
+  (python.exe -m pip install --upgrade pip) if required
+
+  (just "deactivate" to deactivate the venv)
+
+6. SHOW venv
+  
+  echo %VIRTUAL_ENV%
+
+7- Copy or create next step notebook with Local Python 
+
+  explorer.exe .
+
+8- open jupter notebook with Local Python 
+
+  pip list
+  jupyter notebook
+
+9. add packages into venv as you wish
+  
+  pip install -r requirements.txt
+  pip install -r requirements.txt -q (quite)
+  (if you already have requirement file)
+
+  pip install streamlit==1.10.0
+  pip install scikit-learn==1.0.2
+
+"""(pip list) to see the packages
+   (pip freeze > requirements.txt) to create requirement file""""
+   
+  (python -V)
+  (streamlit version)
+
+10. streamlit run my_app.py
+  
+ ngroup local deki bilg uygulamayı diğer bilg gösterme 
+- https://ngrok.com/docs/secure-tunnels
+- tmax
+- ec2
+
+# save enviroment list
+pip freeze > requirements.txt 
+
+11. finaly deactivate local python
+
+  deactivate
+
+-------------PUSH MODELS-----------
+
+1.Push the following files to the github 
+
+-saved model
+-app.py file (streamlit commands)
+-requirements.txt and other files
+
+2. Connect to instance bash or git
+
+  a. Open the githbash here where you save your pem file
+   
+  b. Conncect to instance using ssh commands 
+
+    -click connect from aws console (ssh client) (optional add -yes)
+    -copy and paste the example (add "sudo" to to copied code if it not works)
+    -type yes and enter
+
+  use this command if even sudo doesn't works with coppied code.
+
+    chmod 400 yourpemname.pem
+
+8. to update linux CentOS: 
+
+    sudo yum update -y 
+
+3. to see the python versions on your ec2
+
+  python --version
+
+4. install git to ec2
+
+  sudo yum install git
+
+5. Copy app files into ec2
+
+  git clone https://github.com/richardclarusway/inclass_streamlit.git
+  (method 1 : use git clone method)
+  (rm -rf folder_name    --- to delet the folder with the files inside it)
+
+6. cd to folder downloaded from github (cd: change directory)
+
+  cd inclass_streamlit 
+
+7. Create venv 
+
+  python3 -m venv env_name
+
+8. activate venv (maybe pip required -----python -m pip3 install -U pip3-------)
+  
+  source env_name/bin/activate 
+  (for linux or git)
+
+9. install required packages inside this folder s(foldername) in ec2
+
+    pip3 install -r requirements.tx
+
+10. streamlit run app.py
+
+You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.31.28.28:8501
+  External URL: http://18.188.133.122:8501
+
+(When you close the git bash no matter the instance is working the app will stop. 
+To prevent the app from this or in other words to let it work even you exit from the gitbash you should install tmux)
+
+11. "Control C" to stop running app
+
+12. install the tmux
+
+  sudo yum install tmux
+
+13. create a new tmux session
+
+  tmux new -s st_instance
+
+14. run the app 
+
+  streamlit run app.py
+
+Then it is ok. Even if you close the gitbash or what ever you are using for linux, the app will continue to work.
+
+You can now view your Streamlit app in your browser.                                                                                     
+Network URL: http://172.31.21.107:8501                                        
+External URL: http://3.17.161.155:8501 
+
+15. to detach from tmux session
+
+"control b" then remove your fingers from keyboard then "d"
+
+(if you again want to attach: tmux attach -t st_instance)
+(and if you want to stop your app : Control+c inside the tmux session)
+
+16. to kill the session
+
+  tmux kill-session -t st_instance
+
+-------------END-----------
